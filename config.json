@@ -1,0 +1,41 @@
+{
+  "base_url": "https://ai.hackclub.com/proxy/v1",
+  "models": [
+    "anthropic/claude-haiku-5.5",
+    "minimax/minimax-m3.1-flash",
+    "~deepseek/deepseek-flash-latest"
+  ],
+  "idle_mode": false,
+  "color": true,
+  "request_timeout": 90,
+  "max_steps": 12,
+  "max_tokens": 4096,
+  "context_char_limit": 60000,
+  "memory_enabled": true,
+  "memory_word_limit": 650,
+  "prompt_url": "",
+  "workspace": "workspace",
+  "user_prefix": "> ",
+  "assistant_prefix": "· ",
+  "command_timeout": 20,
+  "rules": {
+    "deny": [
+      "*rm*",
+      "*sudo*",
+      "*shutdown*",
+      "*reboot*",
+      "*mkfs*",
+      "*curl*",
+      "*wget*"
+    ],
+    "allow": [
+      "pwd",
+      "ls",
+      "ls *"
+    ],
+    "ask": [
+      "mkdir *",
+      "touch *"
+    ]
+  }
+}

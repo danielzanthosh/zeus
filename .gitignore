@@ -1,0 +1,10 @@
+.env
+.env.*
+!.env.example
+.DS_Store
+__pycache__/
+*.py[cod]
+chats/
+memory.md
+prompt-cache.json
+workspace/
