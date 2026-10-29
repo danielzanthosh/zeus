@@ -29,7 +29,7 @@ Zeus also reads `OPENROUTER_API_KEY` from the process environment. Keep `.env` p
 | `/config` | Open `config.json` in the system's default editor |
 | `/memory` | Open `memory.md` in the system's default editor |
 | `/model NAME` | Use a model for this conversation only |
-| `/yolo [on|off]` | Toggle session-only automatic approval for ordinary commands |
+| `/yolo` `[on/off]` | Toggle session-only automatic approval for ordinary commands |
 | `/exit` | Exit Zeus |
 
 Zeus asks before commands that need approval. Ultra-dangerous commands always need explicit approval, including in `/yolo` mode. Command execution runs with your operating-system account permissions and is not an OS sandbox. Review commands and local policy before approving them.
