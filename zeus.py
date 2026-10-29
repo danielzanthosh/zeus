@@ -6,7 +6,6 @@ import fnmatch
 import io
 import json
 import os
-from pathlib import Path
 import re
 import shutil
 import signal
@@ -16,6 +15,7 @@ import tempfile
 import time
 import urllib.request
 import uuid
+from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent
 DEFAULTS = {
@@ -87,6 +87,13 @@ def safe_text(text):
 
 def in_idle_shell():
     return type(sys.stdout).__module__.startswith("idlelib.")
+
+
+def clear_console(idle_mode=False):
+    if in_idle_shell() or idle_mode:
+        print("\n" * 80, end="", flush=True)
+    elif sys.stdout.isatty():
+        print("\033[2J\033[H", end="", flush=True)
 
 
 def status(text, c):
@@ -747,6 +754,7 @@ def main():
     if (ROOT / c["workspace"]).is_symlink():
         print("Workspace cannot be a symlink.")
         return
+    clear_console(c["idle_mode"])
     signal.signal(signal.SIGINT, cancel)
     prompt, chat = get_prompt(c), new_chat()
     color = use_color(c)
